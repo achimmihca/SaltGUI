@@ -139,6 +139,24 @@ saltgui_templates:
         command: test.version
 ```
 
+Alternatively, a separate file can be used.
+The filename must be `saltgui/static/salt-templates.json`.
+e.g.:
+```
+{
+    "template3": {
+        "description": "Third template"
+        "target": "*"
+        "command": "test.fib num=10"
+    },
+    "template4": {
+        "description": "Fourth template"
+        "targettype": "glob"
+        "target": "dev*
+        "command": "test.version"
+    }
+}
+```
 
 ## Jobs
 SaltGUI shows a maximum of 7 jobs in on the right-hand-side of the screen.

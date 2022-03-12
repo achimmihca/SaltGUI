@@ -80,6 +80,10 @@ export class API {
     return this.apiRequest("GET", "/static/salt-motd.html");
   }
 
+  getStaticTemplatesJson () {
+    return this.apiRequest("GET", "/static/salt-templates.json");
+  }
+
   getLocalBeaconsList (pMinionId) {
     const params = {
       "client": "local",

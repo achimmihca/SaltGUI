@@ -1,4 +1,9 @@
 {
+"template2": {
+  "description": "2nd template",
+  "target": "#*",
+  "command": "test.fib num=10"
+  },
 "template4": {
   "description": "Third template",
   "target": "#*",

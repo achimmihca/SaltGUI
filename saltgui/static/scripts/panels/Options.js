@@ -41,7 +41,8 @@ export class OptionsPanel extends Panel {
         "state-output-pct", null, "false",
         [["output-pct", "true", "false"]]
       ],
-      ["templates", null, "(none)"],
+      ["templates-master", null, "(none)"],
+      ["templates-json", null, "(none)"],
       ["public-pillars", "saltgui", "(none)"],
       ["preview-grains", "saltgui", "(none)"],
       ["hide-jobs", "saltgui", "(none)"],

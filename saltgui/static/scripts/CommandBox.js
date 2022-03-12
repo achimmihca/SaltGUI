@@ -42,7 +42,12 @@ export class CommandBox {
       return;
     }
     const menu = new DropDownMenu(titleElement);
-    const templatesText = Utils.getStorageItem("session", "templates", "{}");
+    CommandBox._populateTemplateMenu2(menu, "templates_master");
+    CommandBox._populateTemplateMenu2(menu, "templates_json");
+  }
+
+  static _populateTemplateMenu2 (pMenu, pTemplateType) {
+    const templatesText = Utils.getStorageItem("session", pTemplateType, "{}");
     const templates = JSON.parse(templatesText);
     const keys = Object.keys(templates).sort();
     for (const key of keys) {
@@ -51,7 +56,7 @@ export class CommandBox {
       if (!description) {
         description = "(" + key + ")";
       }
-      menu.addMenuItem(
+      pMenu.addMenuItem(
         description,
         () => {
           CommandBox._applyTemplate(template);

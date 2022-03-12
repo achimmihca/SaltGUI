@@ -38,7 +38,7 @@ export class TemplatesPanel extends Panel {
     // should we update it or just use from cache (see commandbox) ?
     let masterTemplates = pWheelConfigValuesData.return[0].data.return.saltgui_templates;
     if (masterTemplates) {
-      Utils.setStorageItem("session", "templates", JSON.stringify(masterTemplates));
+      Utils.setStorageItem("session", "templates_master", JSON.stringify(masterTemplates));
       Router.updateMainMenu();
     } else {
       masterTemplates = {};
@@ -48,6 +48,14 @@ export class TemplatesPanel extends Panel {
     for (const key of masterKeys) {
       const template = masterTemplates[key];
       this._addTemplate("master", key, template);
+    }
+
+    const saltTemplatesJsonTxt = Utils.getStorageItem("session", "templates_json", {});
+    const saltTemplatesJson = JSON.parse(saltTemplatesJsonTxt);
+    const saltTemplatesKeys = Object.keys(saltTemplatesJson).sort();
+    for (const key of saltTemplatesKeys) {
+      const template = saltTemplatesJson[key];
+      this._addTemplate("salt-templates.json", key, template);
     }
 
     const totalKeys = masterKeys.length;
